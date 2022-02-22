@@ -10,7 +10,7 @@ struct Queue{
        queue = new int();
    }
    bool isEmpty(){
-       if(rear == front)
+       if(rear != front)
           return false;
         return true;  
    }
