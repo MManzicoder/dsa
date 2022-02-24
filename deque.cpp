@@ -32,9 +32,10 @@ class Deque{
             }else if(front == 0){
                 front = size-1;
             }else {
-                front++;
+                front--;
             }
             deque[front] = data;
+            display();
             return;
         }
         void addTorear(int data){
@@ -51,6 +52,7 @@ class Deque{
                 rear++;
             }
             deque[rear] = data;
+            display();
             return;
         }
         void deleteFromfront(){
@@ -66,6 +68,7 @@ class Deque{
             }else{
                 front++;
             }
+            display();
             return;
         }
         void deleteFromrear(){
@@ -81,6 +84,7 @@ class Deque{
             }else{
                 rear--;
             }
+            display();
             return;
         }
         void display(){
@@ -99,16 +103,52 @@ class Deque{
                 for(int k=front; k<=rear; k++){
                     cout<<deque[k]<<" ";
                 }
-            }            
+            } 
+            cout<<endl;           
         }
 };
+void ask(Deque *dq){
+  int choice;
+  cout<<"1. Display\n";
+  cout<<"2. Add to front\n";
+  cout<<"3. Add to rear\n";
+  cout<<"4. Delete from front\n";
+  cout<<"5. Delete from rear\n";          
+  cout<<"0. Exit\n";          
+  cin>>choice;
+  switch(choice){
+      case 1: 
+         dq->display();
+         break;
+      case 2: 
+        int n;
+        cout<<"Enter element to add to front!: ";
+        cin>>n;
+         dq->addTofront(n);
+         break;          
+      case 3: 
+        int d;
+        cout<<"Enter element to add to rear!: ";
+        cin>>d;         
+         dq->addTorear(d);
+         break;       
+      case 4: 
+         dq->deleteFromfront();
+         break;         
+      case 5: 
+         dq->deleteFromrear();
+         break;
+      case 0:
+       exit(-1);                  
+     default: 
+       cout<<"Invalid choice try again!\n"<<endl;
+  }
+};
 int main(){
-    Deque *dq = new Deque(10);
-    dq->addTofront(15);
-    dq->addTofront(25);
-    dq->addTofront(35);
-    dq->addTofront(45);
-    dq->addTofront(55);
-    dq->display();
+      Deque *dq = new Deque(10);
+      cout<<"Choose what to do"<<endl;
+    while(true){
+        ask(dq);
+    }
     return 0;
 }
